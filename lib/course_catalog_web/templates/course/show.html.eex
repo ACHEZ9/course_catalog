@@ -1,0 +1,33 @@
+<h2>Show Course</h2>
+
+<ul>
+
+  <li>
+    <strong>Term:</strong>
+    <%= @course.term %>
+  </li>
+
+  <li>
+    <strong>Code:</strong>
+    <%= @course.code %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @course.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @course.description %>
+  </li>
+
+  <li>
+    <strong>Credits:</strong>
+    <%= @course.credits %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: course_path(@conn, :edit, @course) %></span>
+<span><%= link "Back", to: course_path(@conn, :index) %></span>

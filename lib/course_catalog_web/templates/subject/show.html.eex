@@ -1,0 +1,23 @@
+<h2>Show Subject</h2>
+
+<ul>
+
+  <li>
+    <strong>Term:</strong>
+    <%= @subject.term %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @subject.name %>
+  </li>
+
+  <li>
+    <strong>Abbreviation:</strong>
+    <%= @subject.abbreviation %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: subject_path(@conn, :edit, @subject) %></span>
+<span><%= link "Back", to: subject_path(@conn, :index) %></span>

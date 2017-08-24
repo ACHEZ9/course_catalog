@@ -17,6 +17,9 @@ defmodule CourseCatalogWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+
+    resources "/courses", CourseController
+    resources "/subjects", SubjectController
   end
 
   # Other scopes may use custom stacks.
