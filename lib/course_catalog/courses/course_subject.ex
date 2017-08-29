@@ -16,7 +16,7 @@ defmodule CourseCatalog.Courses.CourseSubject do
   @doc false
   def changeset(%CourseSubject{} = course_subject, attrs) do
     course_subject
-    |> cast(attrs, [])
-    |> validate_required([])
+    |> cast(attrs, [:course_id, :subject_id])
+    |> validate_required([:course_id, :subject_id])
   end
 end

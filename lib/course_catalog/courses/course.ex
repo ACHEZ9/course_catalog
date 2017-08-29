@@ -1,7 +1,9 @@
 defmodule CourseCatalog.Courses.Course do
   use Ecto.Schema
   import Ecto.Changeset
+  alias CourseCatalog.Courses.Subject
   alias CourseCatalog.Courses.Course
+  alias CourseCatalog.Courses.CourseSubject
 
 
   schema "courses" do
@@ -20,6 +22,6 @@ defmodule CourseCatalog.Courses.Course do
   def changeset(%Course{} = course, attrs) do
     course
     |> cast(attrs, [:term, :code, :name, :description, :credits])
-    |> validate_required([:term, :code, :name, :description, :credits])
+    |> validate_required([:code, :name, :description])
   end
 end

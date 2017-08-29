@@ -3,8 +3,8 @@ defmodule CourseCatalog.Repo.Migrations.CreateCourseSubjects do
 
   def change do
     create table(:course_subjects) do
-      add :course_id, references(:courses, on_delete: :nothing)
-      add :subject_id, references(:subjects, on_delete: :nothing)
+      add :course_id, references(:courses, on_delete: :delete_all)
+      add :subject_id, references(:subjects, on_delete: :delete_all)
 
       timestamps()
     end

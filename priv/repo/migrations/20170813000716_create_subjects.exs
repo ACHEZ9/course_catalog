@@ -6,6 +6,7 @@ defmodule CourseCatalog.Repo.Migrations.CreateSubjects do
       add :term, :string
       add :name, :string
       add :abbreviation, :string
+      add :subject_key, :string
 
       timestamps()
     end
