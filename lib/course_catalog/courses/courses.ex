@@ -104,6 +104,31 @@ defmodule CourseCatalog.Courses do
 
   alias CourseCatalog.Courses.Subject
 
+  def search_courses("", "") do
+    Course
+    |> order_by(:name)
+    |> preload(:subjects)
+    |> Repo.all
+  end
+
+  def search_courses("", name) do
+    Course
+    |> where([c], like(c.name, ^"#{name}%"))
+    |> order_by(:name)
+    |> preload(:subjects)
+    |> Repo.all
+  end
+
+  def search_courses(subject_id, name) do
+    Course
+    |> join(:inner, [c], s in assoc(c, :subjects))
+    |> where([c, s], s.id == ^subject_id)
+    |> where([c, s], like(c.name, ^"#{name}%"))
+    |> order_by([c, s], c.name)
+    |> preload(:subjects)
+    |> Repo.all
+  end
+
   @doc """
   Returns the list of subjects.
 
@@ -114,7 +139,9 @@ defmodule CourseCatalog.Courses do
 
   """
   def list_subjects do
-    Repo.all(Subject)
+    Subject
+    |> order_by(:name)
+    |> Repo.all
   end
 
   @doc """

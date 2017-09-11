@@ -16,7 +16,9 @@ defmodule CourseCatalogWeb.Router do
   scope "/", CourseCatalogWeb do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", CourseController, :search
+
+    post "/courses/search", CourseController, :search, as: :course_search
 
     resources "/courses", CourseController
     resources "/subjects", SubjectController

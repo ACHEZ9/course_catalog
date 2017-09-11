@@ -4,6 +4,18 @@ defmodule CourseCatalogWeb.CourseController do
   alias CourseCatalog.Courses
   alias CourseCatalog.Courses.Course
 
+  def search(conn, %{"search" => %{"course_name" => course_name, "subject_id" => subject_id}}) do
+    courses = Courses.search_courses(subject_id, course_name)
+    subjects = Courses.list_subjects
+    render(conn, "search.html", courses: courses, subjects: subjects)
+  end
+
+  def search(conn, _params) do
+    courses = Courses.search_courses("", "")
+    subjects = Courses.list_subjects
+    render(conn, "search.html", courses: courses, subjects: subjects)
+  end
+
   def index(conn, _params) do
     courses = Courses.list_courses()
     render(conn, "index.html", courses: courses)
