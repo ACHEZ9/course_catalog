@@ -22,6 +22,9 @@ defmodule CourseCatalogWeb.Router do
 
     resources "/courses", CourseController
     resources "/subjects", SubjectController
+    resources "/users", UserController
+
+    resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
 
   # Other scopes may use custom stacks.
